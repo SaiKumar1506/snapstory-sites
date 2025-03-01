@@ -30,7 +30,7 @@ const Orders = () => {
       status: "Delivered",
       eta: "5 min",
       items: [
-        { id: 1, name: "Veg pulao", price: 80, quantity: 1 }
+        { id: 1, name: "Lemon soda", price: 40, quantity: 2 }
       ]
     }
   ];
@@ -46,26 +46,29 @@ const Orders = () => {
           showForwardButton={true} 
         />
         
-        <div className="p-4">
-          <div className="bg-white rounded-lg overflow-hidden shadow-sm">
-            {orders.map((order, index) => (
-              <motion.div
-                key={order.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.3 }}
-              >
-                <OrderCard
-                  id={order.id}
-                  restaurant={order.restaurant}
-                  date={order.date}
-                  total={order.total}
-                  status={order.status}
-                  eta={order.eta}
-                  onClick={() => setSelectedOrder(order.id)}
-                />
-              </motion.div>
-            ))}
+        <div className="ui-content" role="main">
+          <div className="mb-16">
+            <ul data-role="listview" data-inset="false" id="ollistview" className="ui-listview">
+              {orders.map((order, index) => (
+                <motion.li
+                  key={order.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                  className={index === 0 ? "ui-first-child" : index === orders.length - 1 ? "ui-last-child" : ""}
+                >
+                  <OrderCard
+                    id={order.id}
+                    restaurant={order.restaurant}
+                    date={order.date}
+                    total={order.total}
+                    status={order.status}
+                    eta={order.eta}
+                    onClick={() => setSelectedOrder(order.id)}
+                  />
+                </motion.li>
+              ))}
+            </ul>
           </div>
         </div>
         

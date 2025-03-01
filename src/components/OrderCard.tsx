@@ -19,14 +19,14 @@ const OrderCard = ({ id, restaurant, date, total, status, eta, onClick }: OrderC
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.01 }}
       transition={{ duration: 0.2 }}
-      className="border-b border-gray-200 py-4 px-4"
+      className="border-b border-gray-200 ui-btn ui-btn-icon-right ui-icon-carat-r"
       onClick={onClick}
     >
       <div className="flex justify-between items-start">
-        <div>
-          <h3 className="font-medium">Order No: {id}</h3>
-          <p className="text-sm text-gray-600">Restaurant: {restaurant}</p>
-          <p className="text-sm text-gray-600">Order On: {date}</p>
+        <div className="w-full">
+          <h1 className="font-medium text-base">Order No: {id}</h1>
+          <p className="text-sm text-gray-600"><strong>Restaurant: {restaurant}</strong></p>
+          <p className="text-sm text-gray-600"><strong>Order On: {date}</strong></p>
           <p className="text-sm text-gray-600">Total: {total}</p>
           <p className="text-sm text-gray-600">Status: {status}</p>
           <p className="text-sm text-gray-600">ETA: {eta}</p>
